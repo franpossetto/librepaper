@@ -1,0 +1,69 @@
+<div class="row">
+	<div class="col s12 red lighten-2" style="height: 260px;">
+			<br>
+			<div style=" margin-left: 25px;">
+				<h1 style="font-size: 30px; color: white; font-weight: 400;"> Proyectos </h1>
+				<p style="margin-top:-20px;color: white; font-weight: 200; font-size: 20px;"> Administra tu lista de proyectos</p>	
+				<a class="waves-effect waves-light btn cyan" href="/project/new">Crear nuevo proyecto</a>
+			</div>
+	</div>
+</div>
+
+			<div style=" margin-left: 25px;">
+<br>
+<!-- <a class="waves-effect waves-light btn" href="/project/join/">Ver proyectos</a>
+ --><br><br>
+<% _.each(project, function(prj) { %>
+		    <div class="card horizontal">
+		      	<div class="card-image">
+		        	<img src="/images/1.jpg">
+		      	</div>
+		      	<div class="card-stacked">
+		        	<div class="card-content">
+		        		<div class="right">
+							<!-- Dropdown Trigger -->
+							<a class='dropdown-button btn' href='#' data-activates='<%= prj.name %>'> <i class="small material-icons">mode_edit</i>
+							</a>
+
+							<!-- Dropdown Structure -->
+							<ul id='<%= prj.name %>' class='dropdown-content'>
+								<li><a href="">Mensaje</a></li>
+								<li><a href="/project/edit/<%= prj.id %>">editar</a></li>
+<!-- 								<li><a href="#!">invitar</a></li>
+ -->								<li class="divider"></li>
+								<li><a href="/project/destroy/<%= prj.id %>" method="POST">borrar</a></li>
+
+							</ul>
+						</div>
+						<span class="card-title"><a  style="color:black;" href="/project/show/<%= prj.id %>"><%= prj.name %></a></span>
+					  
+
+
+					    <% if(req.session.User.admin){ 
+					       var members = prj.members 
+					  		_.each(members, function(m) { %>
+
+					  		<ul>
+					  			<li>
+							  		<p style="font-size:12px; color:grey;"><%= m.name %> <%= m.lastname %></p>
+					  			</li>
+					  		<% })
+					  		}%>
+					        
+
+
+			        </div>
+					    
+		        </div>
+		    </div>
+
+		<% }) %>
+
+
+
+</div>
+
+
+
+
+

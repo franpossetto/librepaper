@@ -1,0 +1,22 @@
+<div class="container">
+<form action="/profesor/create/" method="POST">
+	<div class="modal-content">
+		<div class="row">
+		    <div class="col s12">
+			    <h3 style="font-weight:200;">Crear Profesor</h3>
+				 <% _.each(student, function(std) { %>
+				    <p>
+				      <input name="id" type="radio" value="<%=std.user_id.id%>" id="<%=std.id%>"/>
+				      <label for="<%=std.id%>"><%=std.user_id.name%></label>
+				    </p>
+				  <% }) %>
+			</div>
+		</div>
+	</div>
+	<div class="modal-footer">
+		<input type="submit" class="btn cyan" value="Crear"/>
+		<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+		<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancelar</a>
+	</div>
+</form>
+</div>

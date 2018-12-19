@@ -1,0 +1,30 @@
+<div class="container">
+	<br><br>
+	<div class="row">
+		<!--Form-->
+		<div class="col  s12 m6 l6">
+			<br><br><br>
+			<h3 style="font-weight:200;">Registra un usuario</h3>
+			
+		</div>
+		<form class="col  s12 m6 l6" action="/superuser/createUser" method= "POST">
+
+			<div class="input-field">
+			  <input name="mat" type="number" class="validate">
+			  <label>Matricula</label>
+			</div>
+		
+			<div class="input-field">
+			  <input name="name" type="text" class="validate">
+			  <label>Nombre</label>
+			</div>
+			<div class="input-field">
+			  <input name="lastname" type="text" class="validate">
+			  <label>Apellido</label>
+			</div>
+		    <input type="submit" class="btn cyan" value="Registrar"/>
+			<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+		</form>
+    </div>
+</div>
+<br><br><br>

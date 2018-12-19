@@ -1,0 +1,19 @@
+<div class="col s6 push-s1">
+	<br><br>
+	<div class="row">
+
+		<!--Form-->
+		<form class="col s12" action="/subject/create" method= "POST">
+			<h3 style="font-weight:200;">Crear Catedra</h3>
+			<div class="input-field">
+			  <input name="name" type="text" class="validate">
+			  <label>Nombre</label>
+			</div>
+			
+		    <input type="submit" value="submit" class="btn cyan" value="Crear Catedra"/>
+			<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+		</form>
+    </div>
+</div>
+
+			

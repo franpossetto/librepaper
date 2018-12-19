@@ -1,0 +1,32 @@
+
+<div class="container">
+<br><br><br><br><br>
+	<div class="row">
+
+	<div class="col s12 m6 l6">
+			<h3 style="font-weight:200;">Inicia sesion</h3>
+			<p>Continua trabajando! Si no tienes tu cuenta <a class="cyan-text" href="/user/new"> Registrate</a></p>
+		</div>
+		
+		<form action="/session/create" method="POST" class="col s12 m6 l6">
+		
+			<div class="input-field">
+				<input name="mat" type="number" class="validate">
+				<label for="mat">Numero de matricula</label>
+			</div>
+			<div class="input-field">
+	            <input name="password" type="password" class="validate">
+	            <label for="password">Contraseña</label>
+	        </div>
+
+	        <br><br>
+	        <input type="submit" class="btn cyan" value="Entrar"/>
+			<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+		</form>
+
+	</div>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br>
+
+  
+

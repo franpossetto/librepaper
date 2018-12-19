@@ -1,0 +1,54 @@
+<div class="row">
+	<div class="col s12 amber lighten-2" style="height: 260px;">
+			<div class="container">
+			<br>
+			<h1 style="color: blue-grey; font-weight: 300; font-size: 40px;"> Topics </h1>
+			<p style="color: blue-grey; font-weight: 200; font-size: 20px;"> Administra tu lista de topics</p>	
+			<a class="amber darken-2 waves-effect waves-light btn" href="#modal1">Crear nuevo topic</a>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<table class="striped">
+		<thead>
+			<tr>
+				<th>Topic</th>
+				<th>Administrador</th>
+              	<th>Actualizacion</th>
+			</tr>
+		</thead>
+		<tbody>	
+		<% _.each(topics.tag, function(topic) { %>
+		<tr data-id="<%= topic.id %>" data-model="topic">
+			<td><%= topic.name %></td>
+			<td><%= topic.createdAt %></td>
+			<td><%= topic.updatedAt %></td>
+
+			<% }) %>
+		</tr>
+		</tbody>
+	</table>
+</div>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal modal-fixed-footer">
+		<form action="/topic/create" method="POST">
+		<div class="modal-content">
+			<div class="row">
+			    <div class="col s12">
+				    <h3 style="font-weight:200;">Crear topic</h3>
+					<div class="input-field">
+					  <input name="name" type="text" class="validate">
+					  <label>Nombre</label>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-footer">
+			<input type="submit" class="btn cyan" value="Crear"/>
+			<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+			<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancelar</a>
+		</div>
+		</form>
+</div>

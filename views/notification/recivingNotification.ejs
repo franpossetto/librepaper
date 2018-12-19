@@ -1,0 +1,20 @@
+<div style=" margin-left: 25px;">
+	<h2 style="font-size:18px;"> Solicitudes pendientes </h2>
+		<% _.each(notifications, function(n) { %>
+	        <% if(n.state=="pending"){ %>
+	            <p style="font-weight: 200;"><%= n.title %></p>
+	            <a href="/notification/acceptRequest/<%=n.id%>?sendingUser=<%=n.sendingUser%>&&subject_in=<%=n.params%>" class="btn green lighten-2">Aceptar</a>
+				<a href="/notification/declineRequest/<%=n.id%>?sendingUser=<%=n.sendingUser%>" class="btn grey lighten-2">Rechazar</a>
+			<% } %>
+		<% }) %>
+
+		<!--Falta la query, para decir que no hay solicitudes pendientes -->
+
+	<h2 style="font-size:18px;"> Notificaciones</h2>
+		<% _.each(notifications, function(n) { %>
+	        <% if(n.state!="pending"){ %>
+	            <p style="font-weight: 200;"><%= n.title %></p>
+			<% } %>
+		<% }) %>
+</div>
+

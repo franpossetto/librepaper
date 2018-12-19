@@ -1,0 +1,17 @@
+<div class="col s6 push-s1">
+	<br><br>
+	<div class="row">
+
+		<!--Form-->
+		<form class="col s12" action="/project/update/<%=project.id%>" method= "POST">
+			<h3 style="font-weight:200;">Editar Proyecto</h3>
+			<div class="input-field">
+			  <input value="<%=project.name%>" name="name" type="text" >
+			  <label>Nombre</label>
+			</div>
+			
+		    <input type="submit" value="submit" class="btn cyan" value="Actualizar"/>
+			<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+		</form>
+    </div>
+</div>

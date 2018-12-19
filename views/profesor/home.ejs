@@ -1,0 +1,58 @@
+<div class="row">
+	<div class="col s3 hide-on-med-and-down" style="padding-left: 0px;" >
+	<ul id= "nav-mobile" class="left side-nav fixed col s12" style="transform: translateX(0%); position: relative; margin-top: 5px; height: 100vh;" >
+		    <li><a class="subheader">Perfil</a></li>
+			<li><a href="/user/show/<%= session.User.id %>"><%= session.User.name + " " + session.User.lastname %></a></li>
+		    <li><a href="/user/edit/<%= session.User.id %>">Editar perfil</a></li>
+		    <li><div class="divider"></div></li>
+		    <li><a class="subheader">Materias</a></li>
+		    <li><a href="/subject/search">Buscar Catedras</a></li>
+		    <li><a href="/">Mis catedras</a></li>
+		    <li><div class="divider"></div></li>
+		    <li><a class="subheader">Proyectos</a></li>
+		    <li><a href="/project">Mis proyectos</a></li>
+		    <li><div class="divider"></div></li>
+		 <!--    <li><a class="subheader">Cuenta</a></li>
+		    <li><a href="badges.html">Configuracion</a></li> -->
+		    <br>
+			<li><a href="/session/destroy" style="color:grey;">Cerrar sesion</a></li>
+		</ul>
+	</div>
+	<div class="col s12 m12 l9 right">		
+		<%if (subject.length == 0){ %>
+
+			<h1 class ="center-align" style="border: none; font-size:26px; font-weight:500; color:#333;"> ¡ Hola <%= session.User.name %> !</h1>
+			<h1 class ="center-align" style="border: none; font-size:20px; font-weight:500; color:#c5c5c5;">Comienza siendo profesor en alguna catedra.</h1>
+			<div class="center-align" ><a href="/subject/search" class="center-align waves-effect waves-light btn-large">Ver catedras</a></div>
+			<h2 style="border: none; font-size:16px; font-weight:500; color:#c5c5c5;" class ="center-align"> o cambia tu perfil a <a href="/profesor/change"> estudiante </a><h1>
+			<div class="divider"></div><br><br>
+
+			<!-- <h3 class ="left-align" style="border: none; font-size:16px; font-weight:500; color:#333;"">Siguiente pasos:</h3>
+			<h4 class ="left-align" style="border: none; font-size:14px; font-weight:300; color:#333;"">Editar tu perfil</h4>
+			<h4 class ="left-align" style="border: none; font-size:14px; font-weight:300; color:#333;"">Crear un proyecto</h4>
+			<h4 class ="left-align" style="border: none; font-size:14px; font-weight:300; color:#333;"">Elige a tus compañeros de equipo</h4> -->
+		<% } else { %>
+
+			<h1 style="border: none; font-size:18px; font-weight:500; color:#333;">Mis catedras </h1>
+			<% _.each(subject, function(sbj) { %>
+			<div class="card">
+				<a href="/subject/show/<%=sbj.subject_in.id%>">
+					<div class="card-image waves-effect waves-block waves-light">
+						<div class="card-panel amber lighten-2" style="height:100px;">
+						</div>
+				    </div>
+			    </a>
+				<div class="card-content">
+					<span class="card-title activator grey-text text-darken-4"><%=sbj.subject_in.name%><i class="material-icons right">more_vert</i></span>
+				</div>
+				<div class="card-reveal">
+					<span class="card-title grey-text text-darken-4"><%= sbj.subject_in.name%><i class="material-icons right">close</i></span>
+					<a href="/subject/show/<%=sbj.subject_in.id%>">Ver catedra</a><br>
+					<a href="/profesor/destroy/<%=sbj.id%>">Eliminar catedra</a>
+				</div>
+			</div>
+				
+			<% }) %>
+		<% } %>
+	</div>
+</div>

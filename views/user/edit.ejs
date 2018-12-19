@@ -1,0 +1,74 @@
+<div class="row">
+	<div class="col s3 hide-on-med-and-down" style="padding-left: 0px;" >
+	<ul id= "nav-mobile" class="left side-nav fixed col s12" style="transform: translateX(0%); position: relative; margin-top: 5px; height: 100vh;" >
+		    <li><a class="subheader">Perfil</a></li>
+			<li><a href="/user/show/<%= session.User.id %>"><%= session.User.name + " " + session.User.lastname %></a></li>
+		    <li><a href="/user/edit/<%= session.User.id %>">Editar perfil</a></li>
+		    <li><div class="divider"></div></li>
+		    <li><a class="subheader">Materias</a></li>
+		    <li><a href="/subject/search">Buscar Catedras</a></li>
+		    <li><a href="/">Mis catedras</a></li>
+		    <li><div class="divider"></div></li>
+		    <li><a class="subheader">Proyectos</a></li>
+		    <li><a href="/project">Mis proyectos</a></li>
+		    <li><a href="/project/new">Crear nuevo proyecto</a></li>
+		    <li><div class="divider"></div></li>
+		 <!--    <li><a class="subheader">Cuenta</a></li>
+		    <li><a href="badges.html">Configuracion</a></li> -->
+		    <br>
+			<li><a href="/session/destroy" style="color:grey;">Cerrar sesion</a></li>
+		</ul>
+	</div>
+	<div class="col s12 m12 l6 left">
+			<form action="/user/update/<%=user.id%>" method="POST" id="sign-up-form">
+				
+
+			<% if (session.authenticated && session.User.superuser) { %>
+				<% if (user.superuser) { %>
+				 	<p>
+				      <input type="checkbox" name="superuser" id="test7" checked="checked" disabled="disabled"/>
+				      <label for="test7">Es super usuario</label>
+				    </p>
+				<% } else { %>
+				 <p>
+
+					<input name="superuser" type="checkbox" class="filled-in" id="filled-in-box"/>
+				  	<label for="filled-in-box">Convertir en Super Usuario</label>
+				</p>
+				<% } %> 
+
+				<% if (user.admin) { %>
+				 	<p>
+				      <input type="checkbox" name="admin" id="ad" checked="checked" />
+				      <label for="ad">Es admin</label>
+				    </p>
+				<% } else { %>
+				 <p>
+					<input name="admin" type="checkbox" class="filled-in" id="ad"/>
+				  	<label for="ad">Convertir en Admin</label>
+				</p>
+				<% } %> 
+				<% if (user.teach) { %>
+				 	<p>
+				      <input type="checkbox" name="teach" id="ad" checked="checked" />
+				      <label for="teach">Es Profesor</label>
+				    </p>
+				<% } %>
+
+			<% } %> 
+
+
+				<div class="form-control">
+					<input value="<%=user.name%>" name="name" type="text"/>
+				</div>
+				<div class="form-control">
+					<input value="<%=user.lastname%>" name="lastname" type="text"/>
+				</div>
+				<div class="form-control">	
+					<input value="<%=user.email%>" name="email" type="email"/>
+				</div>
+
+				<input type="submit" class="btn cyan" value="Actualizar"/>
+				<input value="<%=_csrf%>" name="_csrf" type="hidden" class="form-control"/>
+			</form>
+	</div>

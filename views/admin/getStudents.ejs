@@ -1,0 +1,86 @@
+<div class="row">
+	<div class="col s12 red lighten-2" style="height: 260px;">
+			<br>
+			<div style=" margin-left: 25px;">
+				<h1 style="font-size: 30px; color: white; font-weight: 400;"> Alumnos </h1>
+				<p style="margin-top:-20px;color: white; font-weight: 200; font-size: 20px;"> Administra tu lista de Alumnos</p>	
+				
+			</div>
+	</div>
+</div>	
+<div class="row">
+		<div class="col s12 m12 l8 left" style="margin-left: 25px;">
+			<h1 style="border: none; font-size:18px; font-weight:500; color:#333;">Alumnos </h1>
+			    <ul class="collection with-header z-depth-1">
+	   				<% _.each(students, function(student) { %>
+	        		 <li class="collection-item">
+		        		 <div>
+		        		 	<span style="font-size: 18px; color:#333">
+		        		 		<%= student.user_id.name %>
+		        		 	<span>
+		        		 	<a href="#!" class="secondary-content">
+				        		<i class="material-icons right"><a href="#modal1" style="color:rgba(158, 158, 158, 0.51);">delete</a></i>
+										        		 <!-- Modal Structure -->
+								<div id="modal1" class="modal">
+									<div class="modal-content">
+
+										<p>¿Estas seguro que quieres eliminar a este estudiante? Si lo eliminas ya no podràs ver su seguimiento en la materia</p>
+									</div>
+									<div class="modal-footer">
+									     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">No</a>
+
+										<a href="/student/destroy/<%=student.id%>" class="modal-action modal-close waves-effect waves-green btn-flat">Borrar</a>
+									</div>
+								</div>
+				        		<i class="material-icons right"><a href="/user/edit/<%=student.user_id.id%>" style="color:rgba(158, 158, 158, 0.51);">edit</a></i>
+				        		<i class="material-icons right"><a href="#modal2" style="color:rgba(158, 158, 158, 0.51);">email</a></i>
+				        			<!-- Modal Structure -->
+								<div id="modal2" class="modal modal-fixed-footer">
+									<form action="/email/sendToUser" method="POST">
+										<div class="modal-content">
+											<div class="row">
+											    <div class="col s12">
+											    	<div class="row">
+												    	<div class="input-field col s6 left">
+												        	<input name="email" type="email" class="validate" value="<%=student.user_id.email%>">
+												        	<label for="email" data-error="wrong" data-success="right">Para</label>
+												        </div>
+							         					<div class="input-field col s12">
+												        	<input name="sub" type="text" class="validate">
+												        	<label for="sub">Agregar asunto</label>
+												        </div>
+												 		<div class="input-field col s12">
+												        	<textarea name="content" style="min-height: 150px;" class="materialize-textarea"></textarea>
+												        	<label for="icon_prefix2">Escribe tu mensaje aquì.</label>
+												        </div>
+											    	</div>
+											    </div>
+											</div>
+										</div>
+										<div class="modal-footer">
+											<input type="submit" class="btn cyan" value="Enviar"/>
+										<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+											<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancelar</a>
+										</div>
+									</form>
+								</div>
+				        		<div id="modal1" class="modal">
+									<div class="modal-content">
+
+										<p>¿Estas seguro que quieres eliminar a este estudiante? Si lo eliminas ya no podràs ver su seguimiento en la materia</p>
+									</div>
+									<div class="modal-footer">
+									     <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">No</a>
+
+										<a href="/student/destroy/<%=student.id%>" class="modal-action modal-close waves-effect waves-green btn-flat">Borrar</a>
+									</div>
+								</div>
+			        		</a>
+			        	</div>
+		        	</li>
+	        		<%})%>
+	     	    </ul>
+	     	</div>
+</div>	
+
+

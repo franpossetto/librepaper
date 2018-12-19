@@ -1,0 +1,68 @@
+<div class="row">
+	<div class="col s12 indigo lighten-2" style=" height: 260px;">
+			<div class="container">
+			<br>
+		
+			<h3 style="color: white; font-weight: 300;"> Correo electronico </h3>
+			<p style="color: white; font-weight: 200; font-size: 20px;"> Administra tus Correos</p>	
+			<a class="waves-effect waves-light btn" href="#modal1">Enviar nuevo Correo</a>
+		</div>
+	</div>
+</div>
+
+<div class="container">
+	<!-- Modal Structure -->
+		<div id="modal1" class="modal modal-fixed-footer">
+		<form action="/email/sendMultipleEmail" method="POST">
+
+			<div class="modal-content">
+				<div class="row">
+				    <div class="col s12">
+				    	<div class="row">
+					    	<!-- <div class="input-field col s6 left">
+					        	<input name="email" type="email" class="validate">
+					        	<label for="email" data-error="wrong" data-success="right">Para</label>
+					        </div> -->
+							<div class="input-field col s12 right">
+								<select name="emailMultiple" multiple>
+								<option value="" disabled selected>Seleccion multiple</option>
+	   							<% _.each(students, function(student) { %>
+									<option value="<%=student.user_id.email%>" ><%=student.user_id.email%></option>
+
+								<% }) %>
+								</select>
+							</div>
+         					<div class="input-field col s12">
+					        	<input name="sub" type="text" class="validate">
+					        	<label for="sub">Agregar asunto</label>
+					        </div>
+					 		<div class="input-field col s12">
+					        	<textarea name="content" style="min-height: 150px;" class="materialize-textarea"></textarea>
+					        	<label for="icon_prefix2">Escribe tu mensaje aquì.</label>
+					        </div>
+				    	</div>
+				    </div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<input type="submit" class="btn cyan" value="Enviar"/>
+			<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+				<a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Cancelar</a>
+			</div>
+		</form>
+  		</div>
+<br><br>
+
+<% _.each(emails, function(email) { %>
+	<p>Mail enviado por: <%=email.writer.name%></p> 
+	<p>Para: <%=email.email%></p>
+	<p>Asunto: <%=email.sub%></p>
+	<p>Contenido: <%=email.content%></p>
+
+	<br> 
+	<br> 
+<% }) %>
+
+
+
+ </div>

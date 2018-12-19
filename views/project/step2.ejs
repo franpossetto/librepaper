@@ -1,0 +1,35 @@
+<div class="col s6 push-s1">
+	<br><br><br>
+		<div class="row">
+		<!--Form-->
+		<form class="col s6 push-s3" action="/project/step3/<%=project.id%>" method="POST">
+			
+			
+			
+				<div class="input-field col s12" style="color: grey;">
+					<p style="font-weight: bold; color: black;"> 2. Elige un Tag.</p>
+					<select name="topic" class="icons">
+					  <option  disabled selected>Agrega un Tag</option>
+					  <% _.each(subject.tag, function(sbj) { %>
+					 	 <option value="<%= sbj.id %>" data-icon="/images/2.jpg" class="left circle"><td><%= sbj.name %></td></option>
+				      <% }) %>	
+				   	<select>
+				</div>
+			<div class="input-field col s12" style="color: grey;">
+				<p style="font-weight: bold; color: black;"> 2. Elige un profesor para el seguimiento de tu proyecto.</p>
+				<select name="profesor" class="icons">
+				  <option  disabled selected>Agrega un profesor</option>
+				  <% _.each(profesor, function(prf) { %>
+				 	 <option value="<%= prf.id %>" data-icon="/images/2.jpg" class="left circle"><td><%= prf.user_id.name %></td></option>
+			      <% }) %>	
+			   	<select>
+			</div>
+			
+			<div class="right">
+		    	<input type="submit" class="btn cyan" value="Siguiente"/>
+				<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+			</div>
+		</form>
+    </div>
+</div>
+

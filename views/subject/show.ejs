@@ -1,0 +1,46 @@
+<div class="row">
+	<div class="col s12 red lighten-2" style="height: 260px;">
+			<br>
+			<div style=" margin-left: 25px;">
+				<h1 style="font-size: 30px; color: white; font-weight: 400;"> <%= subject.name %> </h1>
+				<a class="waves-effect waves-light btn cyan" href="/student/create/<%=subject.id%>">Inscribirse</a>
+			</div>
+	</div>
+</div>
+
+		
+<div class="row">
+	<div class="col s4 right">
+		<table class="striped">
+			<thead>
+				<tr>
+					<th>Profesores</th>
+				</tr>
+			</thead>
+			<tbody>	
+			<%_.each(subject.profesors, function(sbj) {%>
+			<tr data-id="<%= subject.id %>" data-model="subject">
+				<td><%=sbj.user_name%></td>
+				
+				<% }) %>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="col s8 left">
+		<table class="striped">
+			<thead>
+				<tr>
+					<th>Alumnos</th>
+				</tr>
+			</thead>
+			<tbody>	
+	   		<% _.each(students, function(student) { %>
+	   			<tr data-id="<%= student.id %>" data-model="student">
+					<td><%= student.user_id.name %></td>
+				</tr>
+			<% }) %>
+			</tr>
+			</tbody>
+		</table>
+	</div>

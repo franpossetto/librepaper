@@ -1,0 +1,50 @@
+<div class="row">
+	<div class="col s3 hide-on-med-and-down" style="padding-left: 0px;" >
+	<ul id= "nav-mobile" class="left side-nav fixed col s12" style="transform: translateX(0%); position: relative; margin-top: 5px; height: 100vh;" >
+		    <li><a class="subheader">Perfil</a></li>
+			<li><a href="/user/show/<%= session.User.id %>"><%= session.User.name + " " + session.User.lastname %></a></li>
+		    <li><a href="/user/edit/<%= session.User.id %>">Editar perfil</a></li>
+		    <li><div class="divider"></div></li>
+		    <li><a class="subheader">Materias</a></li>
+		    <li><a href="/subject/search">Buscar Catedras</a></li>
+		    <li><a href="/">Mis catedras</a></li>
+		    <li><div class="divider"></div></li>
+		    <li><a class="subheader">Proyectos</a></li>
+		    <li><a href="/project">Mis proyectos</a></li>
+		    <li><a href="/project/new">Crear nuevo proyecto</a></li>
+		    <li><div class="divider"></div></li>
+		 <!--    <li><a class="subheader">Cuenta</a></li>
+		    <li><a href="badges.html">Configuracion</a></li> -->
+		    <br>
+			<li><a href="/session/destroy" style="color:grey;">Cerrar sesion</a></li>
+		</ul>
+	</div>
+	<div class="col s12 m12 l6 left">
+		 <h1 style="border: none; font-size:18px; font-weight:500; color:#333;">Editar mi perfil </h1>
+		 <form action="" method="POST" id="sign-up-form">
+			<div class="col s12">
+				<div class="input-field">
+					<input value="" name="name" type="text"/>
+					<label>Nombre</label>
+				</div>
+			</div>
+			<div class="col s12">
+				<div class="input-field">
+					<input value="" name="lastname" type="text"/>
+					<label>Apellido</label>
+				</div>
+			</div>
+			<div class="col s12">
+				<div class="input-field">
+					<input value="" name="email" type="email"/>
+		    		<label>Correo electronico</label>
+				</div>
+			</div>
+			<div class="col s12"><br>
+				<input type="submit" value="Ok" class="btn cyan"/>
+				<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+			</div>
+		</form>
+		
+	</div>
+</div>

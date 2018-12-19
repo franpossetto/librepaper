@@ -1,0 +1,38 @@
+<div class="col s6 push-s1">
+	<br>
+		<div class="row">
+		<!--Form-->
+		<form class="col s6 push-s3" action="/project/create" method= "POST">
+			<h4 style="font-weight:200; margin-left: 10px;">Nuevo Proyecto</h4>
+			<div class="col s12">
+				<p style="font-weight: bold;"> 1. Elige un nombre que identifique tu proyecto.</p>
+			</div>
+			<div class="input-field col s12">
+			  <input name="name" type="text" class="validate">
+			  <label>Nombre</label>
+			</div>
+			<div class="col s12">
+				<p style="font-weight: bold;"> 1. Elabora una breve descripciòn de 256 caracteres como maximo.</p>
+			</div>
+			<div class="input-field col s12">
+			<textarea name="" class="materialize-textarea"></textarea>
+			<label>Descripcion</label>
+			</div>
+			<div class="input-field col s12" style="color: grey;">
+			<p style="font-weight: bold; color:black;"> 3. Elige una de tus catedras disponibles para desarrollar tu proyecto.</p>
+				<select class="icons" name="subjectSelected">
+				  <option disabled selected>Elige una catedra</option>
+			      <% _.each(student, function(sbj) { %>
+				 	 	<option  value="<%= sbj.subject_id.id %>" data-icon="/images/2.jpg" class="left circle"><td><%=sbj.subject_id.name%></td></option>
+			      <% }) %>
+				<select>
+				<br>
+		    </div>
+		    <div class="right">
+		    	<input type="submit" class="btn cyan" value="Siguiente" href="/"/>
+				<input type="hidden" name="_csrf" value="<%= _csrf %>" />
+			</div>
+		</form>
+    </div>
+</div>
+

@@ -1,0 +1,32 @@
+<div class="container">
+	<h3>Group Administration</h3>
+		<table class='table'>
+		<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Creator</th>
+				</tr>
+		
+
+
+		<% _.each(groups, function(group) { %>				
+				<tr data-id="<%= group.id %>" data-model="group">
+					<td><%= group.id %></td>
+					<td><%= group.name %></td>
+					
+					<% mems = group.members %>
+					<%  _.each(mems, function(m) {  %>
+						<td><%= m.name%></td>
+					<% }) %>
+					
+				</tr> 
+			
+			
+		
+
+		<% }) %>
+		
+
+</table>
+	
+</div>

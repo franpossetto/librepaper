@@ -1,0 +1,73 @@
+<div class="row">
+	<div class="col s12 red lighten-2" style=" height: 260px;">
+			<div class="container">
+			<br>
+			<h3 style="color: white; font-weight: 300;"> Alumnos </h3>
+			<p style="color: white; font-weight: 200; font-size: 20px;"> Puedes adminstrar tu lista de usuarios, y ordenarlos de acuerdo los filtros disponibles.</p>	
+		</div>
+	</div>
+</div>
+
+<div class="container">
+<br><br>
+
+
+ <nav>
+    <div class="nav-wrapper white">
+      <ul class="right">
+        <li>
+			<nav>
+				<form>
+					<div class="input-field white">
+						<input id="search" type="search" ng-model="searchText" required>
+						<label class="label-icon" for="search"><i style="color: #E57373;" class="material-icons">search</i></label>
+						<i class="material-icons">close</i>
+					</div>
+				</form>
+			</nav>
+        </li>
+        <li><a href="badges.html"><i style="color: #E57373;" class="material-icons">view_module</i></a></li>
+        <li><a href="collapsible.html"><i style="color: #E57373;" class="material-icons">refresh</i></a></li>
+        <li><a href="mobile.html"><i style="color: #E57373;" class="material-icons">more_vert</i></a></li>
+      </ul>
+    </div>
+  </nav>
+  <br>
+
+
+<div ng-repeat = "user in Users | filter:searchText">
+		<%console.log("Users. : " + users);%>
+		<p>{{user.name}}</p>
+	</div>
+
+
+
+ <ul class="collection" style="font-family: 'Roboto', sans-serif;">
+ 	<% _.each(users, function(user) { %>
+			
+    <li class="collection-item avatar" style="min-height: 160px;">
+      <img src="images/1.jpg" alt="" class="circle">
+            <a href="/user/show/<%= user.id %>" class="title" style="color: black; font-size: 20px;"><%= user.name %> <%= user.lastname %></a>
+            <p style="font-weight: 300;"><%= user.email %></p>
+			<div class="right secondary-content">
+				<!-- Dropdown Trigger -->
+				<a class='dropdown-button btn' href='#' data-activates='<%= user.id %>'>Modificar</a>
+
+				<!-- Dropdown Structure -->
+				<ul id='<%= user.id %>' class='dropdown-content'>
+					
+					<li><a href="/user/edit/<%= user.id %>">editar</a></li>
+					<li class="divider"></li>
+					<li><a href="/user/destroy/<%= user.id %>" method="POST">borrar</a></li>
+
+				</ul>
+			</div>
+	</li>							  <% }) %>
+	</ul>
+
+
+  
+  
+			
+	</tbody>
+</div>
